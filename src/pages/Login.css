@@ -1,0 +1,106 @@
+
+.login {
+    background-color: #f2f2f2;
+    min-height: 80vh;
+  }
+
+  .login__card {
+    background-color: white;
+    border-radius: 8px;
+    width: 350px;
+  }
+ 
+  .login__logo {
+    
+    display: flex;    
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .login__signInButton {
+    background: #ff9900;
+    border-radius: 2px;
+    width: 100%;
+    height: 35px;
+    border: 1px solid #a88734 #9c7e31 #846a29;
+  }
+
+  .login__registerButton {
+    background: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    width: 100%;
+    height: 35px;
+  }
+  @media (max-width: 1024px) {
+    .login {
+      padding: 15px;
+    }
+  
+    .login__card {
+      width: 320px;
+      padding: 18px;
+    }
+  
+    .login__logo {
+      width: 180px;
+    }
+  
+    p {
+      font-size: 11px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .login {
+      padding: 10px;
+    }
+  
+    .login__card {
+      width: 90%;
+      max-width: 320px;
+      padding: 16px;
+    }
+  
+    .login__logo {
+      width: 160px;
+    }
+  
+    .login__signInButton,
+    .login__registerButton {
+      height: 32px;
+      font-size: 14px;
+    }
+  
+    p {
+      font-size: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .login {
+      padding: 8px;
+    }
+  
+    .login__card {
+      width: 100%;
+      max-width: 300px;
+      padding: 14px;
+    }
+  
+    .login__logo {
+      width: 140px;
+    }
+  
+    .login__signInButton,
+    .login__registerButton {
+      height: 30px;
+      font-size: 13px;
+    }
+  
+    p {
+      font-size: 9px;
+    }
+  }
