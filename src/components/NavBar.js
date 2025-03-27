@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -7,6 +7,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import "./NavBar.css";
 import { useCart } from "../context/CartContext";
 import { useTheme } from "../context/ThemeContext";
+import { Link, useNavigate } from "react-router-dom";
 
 const NavBar = ({ products }) => {
   const { theme, toggleTheme } = useTheme();

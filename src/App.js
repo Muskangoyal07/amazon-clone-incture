@@ -18,11 +18,18 @@ import "./dark.css";
 
 const App = () => {
   const [products, setProducts] = useState([]);
+  const [error, setError] = useState(""); // State to handle errors
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setProducts(data));
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch products. Please try again later.");
+        }
+        return res.json();
+      })
+      .then((data) => setProducts(data))
+      .catch((err) => setError(err.message)); // Set error message
   }, []);
 
   return (
@@ -30,28 +37,35 @@ const App = () => {
       <ThemeProvider>
         <Navbar products={products} />
         <CategoriesBar />
-        <Routes>
-          <Route path="/" element={<Home products={products} />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route
-            path="/product/:id"
-            element={<ProductDetail products={products} />}
-          />
-          <Route path="/cart" element={<CartPage />} />
-          <Route
-            path="/checkout"
-            element={<CheckoutPage products={products} />}
-          />
-          <Route
-            path="/category/:category"
-            element={<CategoryPage products={products} />}
-          />
-          <Route
-            path="/search/:keyword"
-            element={<SearchPage products={products} />}
-          />
-        </Routes>
+        {error ? ( // Display error message
+          <div className="alert alert-danger text-center" role="alert">
+            {error} <br />
+            Please try refreshing the page.
+          </div>
+        ) : (
+          <Routes>
+            <Route path="/" element={<Home products={products} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route
+              path="/product/:id"
+              element={<ProductDetail products={products} />}
+            />
+            <Route path="/cart" element={<CartPage />} />
+            <Route
+              path="/checkout"
+              element={<CheckoutPage products={products} />}
+            />
+            <Route
+              path="/category/:category"
+              element={<CategoryPage products={products} />}
+            />
+            <Route
+              path="/search/:keyword"
+              element={<SearchPage products={products} />}
+            />
+          </Routes>
+        )}
       </ThemeProvider>
     </div>
   );
